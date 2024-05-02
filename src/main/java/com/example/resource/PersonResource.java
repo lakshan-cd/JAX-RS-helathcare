@@ -54,4 +54,16 @@ public class PersonResource {
                     .build();
         }
     }
+    @GET
+    @Path("/{id}")
+    public Response getById(@PathParam("id") int id){
+        PersonEntity result = personDAO.getPersonById(id);
+        if (result != null) {
+            return Response.ok(result).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to retrieve person.")
+                    .build();
+        }
+    }
 }
