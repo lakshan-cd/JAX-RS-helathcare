@@ -40,4 +40,18 @@ public class PrescriptionResource {
         }
     }
 
+
+    @DELETE
+    @Path("/{id}")
+    public Response deletePrescription(@PathParam("id") int id){
+        Boolean result = prescriptionDAO.deletePrescription(id);
+        if (result) {
+            return Response.ok("Prescription deleted successfully.").build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to delete Prescription.")
+                    .build();
+        }
+    }
+
 }

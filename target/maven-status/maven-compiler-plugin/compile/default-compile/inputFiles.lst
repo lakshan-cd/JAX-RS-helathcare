@@ -6,6 +6,7 @@ H:\health\JAX-RS-helathcare\src\main\java\com\example\model\Module.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\application\DatabaseConnection.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\dao\DoctorDAO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\model\PatientEntity.java
+H:\health\JAX-RS-helathcare\src\main\java\com\example\resource\AppoinmentResource.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\resource\StudentResource.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\DTO\PrescriptionDTO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\resource\PatientResource.java
@@ -16,6 +17,7 @@ H:\health\JAX-RS-helathcare\src\main\java\com\example\exception\ResourceNotFound
 H:\health\JAX-RS-helathcare\src\main\java\com\example\dao\PatientDAO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\dao\PersonDAO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\DTO\PatientDTO.java
+H:\health\JAX-RS-helathcare\src\main\java\com\example\dao\AppointmentDAO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\model\BillingInvoiceEntity.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\exception\GlobalExceptionHandler.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\model\AppointmentEntity.java
@@ -25,6 +27,7 @@ H:\health\JAX-RS-helathcare\src\main\java\com\example\model\PrescriptionEntity.j
 H:\health\JAX-RS-helathcare\src\main\java\com\example\resource\DoctorResource.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\dao\TeacherDAO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\model\PersonEntity.java
+H:\health\JAX-RS-helathcare\src\main\java\com\example\DTO\AppoinmentDTO.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\resource\PersonResource.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\model\Teacher.java
 H:\health\JAX-RS-helathcare\src\main\java\com\example\model\MedicalRecordEntity.java

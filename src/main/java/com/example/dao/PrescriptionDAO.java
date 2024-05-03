@@ -53,4 +53,22 @@ public class PrescriptionDAO {
             throw new DAOException("Error occurred while updating perscription", e);
         }
     }
+
+    public Boolean deletePrescription(int id) {
+        String query = "DELETE FROM prescription WHERE prescription_id=?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+
+            int result = statement.executeUpdate();
+            if (result == 0){
+                return false;
+            }else {
+                return true;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new DAOException("Error occurred while deleting perscription", e);
+        }
+    }
 }
