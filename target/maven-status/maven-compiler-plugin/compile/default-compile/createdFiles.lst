@@ -14,6 +14,7 @@ com\example\resource\ModuleResource.class
 com\example\resource\PatientResource.class
 com\example\dao\DoctorDAO.class
 com\example\application\DatabaseConnection.class
+com\example\DTO\DoctorResponseDTO.class
 com\example\dao\PrescriptionDAO.class
 com\example\DTO\DoctorDTO.class
 com\example\exception\GlobalExceptionHandler.class

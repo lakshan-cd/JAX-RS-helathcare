@@ -2,13 +2,13 @@ package com.example.resource;
 
 
 import com.example.DTO.AppoinmentDTO;
-import com.example.DTO.PrescriptionDTO;
 import com.example.dao.AppointmentDAO;
-import com.example.dao.PrescriptionDAO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Map;
 
 @Path("/appointment")
 @Produces(MediaType.APPLICATION_JSON)
@@ -56,4 +56,31 @@ public class AppoinmentResource {
                     .build();
         }
     }
+
+    @GET
+    public Response getAppointmentDataById(){
+        List<Map<String, Object>> result = appoinmentDAO.getAllAppointmentsWithPatientsAndDoctors();
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error Occurred while fetching the data.")
+                    .build();
+        }
+    }
+    @GET
+    @Path("/{id}")
+    public Response getDoctorDataById(@PathParam("id") int id){
+        Map<String, Object> result = appoinmentDAO.getAppointmentByIdWithPatientAndDoctor(id);
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to delete person.")
+                    .build();
+        }
+    }
+
 }

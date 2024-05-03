@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import com.example.DTO.DoctorDTO;
+import com.example.DTO.DoctorResponseDTO;
 import com.example.application.DatabaseConnection;
 import com.example.exception.DAOException;
 import com.example.model.DoctorEntity;
@@ -166,6 +167,7 @@ public class DoctorDAO {
 
         return doctorWithPatients;
     }
+
 
 
 
