@@ -52,7 +52,7 @@ public class BillingInvoiceResource {
                     .build();
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Failed to delete person.")
+                    .entity("Failed to get bill.")
                     .build();
         }
     }
