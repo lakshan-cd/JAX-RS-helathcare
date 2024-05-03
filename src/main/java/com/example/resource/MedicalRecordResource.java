@@ -19,7 +19,6 @@ public class MedicalRecordResource {
     @POST
     public Response createMedicalRecord(MedicalRecordDTO request) {
         Boolean result = medicalRecordDAO.createMedicalRecord(request);
-        System.out.println(result);
         if (result) {
             return Response.ok("Medical Record created successfully.").build();
         } else {
