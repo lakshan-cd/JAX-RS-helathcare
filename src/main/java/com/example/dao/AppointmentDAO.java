@@ -1,31 +1,31 @@
 package com.example.dao;
 
+import com.example.DTO.AppoinmentDTO;
 import com.example.DTO.DoctorDTO;
+import com.example.DTO.PrescriptionDTO;
 import com.example.application.DatabaseConnection;
 import com.example.exception.DAOException;
-import com.example.DTO.PrescriptionDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class PrescriptionDAO {
+public class AppointmentDAO {
 
+    public Boolean createAppointment(AppoinmentDTO request) {
 
-    public Boolean createPrescription(PrescriptionDTO request) {
-
-        String query = "INSERT INTO prescription ( patient_id, doctor_id,medication,dosage,instructions,duration) VALUES (?, ?,?,?,?,?)";
+        String query = "INSERT INTO appointment ( patient_id, doctor_id, date,time,reason) VALUES (?, ?,?,?,?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, request.getPatientId());
             statement.setInt(2, request.getDoctorId());
-            statement.setString(3, request.getMedication());
-            statement.setString(4, request.getDosage());
-            statement.setString(5, request.getInstructions());
-            statement.setString(6, request.getDuration());
+            java.sql.Date sqlDate = new java.sql.Date(request.getDate().getTime());
+            statement.setDate(3, sqlDate);
 
-
+            // Use java.sql.Time directly
+            statement.setTime(4, request.getTime());
+            statement.setString(5, request.getReason());
 
             int rowsInserted = statement.executeUpdate();
             return rowsInserted != 0;
@@ -34,28 +34,30 @@ public class PrescriptionDAO {
         }
     }
 
-    public Boolean updatePrescription(Integer id, PrescriptionDTO request) {
-        String query = "UPDATE prescription SET patient_id=?,doctor_id=? ,medication=?,dosage=? ,instructions=?,duration=? WHERE prescription_id=?";
+    public Boolean updateAppointment(Integer id, AppoinmentDTO request) {
+        String query = "UPDATE appointment SET patient_id=?,doctor_id=? ,date=?,time=?,reason=? WHERE appointment_id=?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, request.getPatientId());
             statement.setInt(2, request.getDoctorId());
-            statement.setString(3, request.getMedication());
-            statement.setString(4, request.getDosage());
-            statement.setString(5, request.getInstructions());
-            statement.setString(6, request.getDuration());
-            statement.setInt(7,id);
+            java.sql.Date sqlDate = new java.sql.Date(request.getDate().getTime());
+            statement.setDate(3, sqlDate);
+
+            // Use java.sql.Time directly
+            statement.setTime(4, request.getTime());
+            statement.setString(5, request.getReason());
+            statement.setInt(6,id);
 
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated != 0;
         } catch (SQLException | ClassNotFoundException e) {
-            throw new DAOException("Error occurred while updating perscription", e);
+            throw new DAOException("Error occurred while updating appointment", e);
         }
     }
 
-    public Boolean deletePrescription(int id) {
-        String query = "DELETE FROM prescription WHERE prescription_id=?";
+    public Boolean deleteAppointment(int id) {
+        String query = "DELETE FROM appointment WHERE appointment_id=?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -68,7 +70,9 @@ public class PrescriptionDAO {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException e) {
-            throw new DAOException("Error occurred while deleting perscription", e);
+            throw new DAOException("Error occurred while deleting appointment", e);
         }
     }
+
+
 }

@@ -1,12 +1,15 @@
 com\example\DTO\PrescriptionDTO.class
 com\example\resource\PrescriptionResource.class
 com\example\resource\PersonResource.class
+com\example\dao\AppointmentDAO.class
 com\example\dao\PersonDAO.class
+com\example\DTO\AppoinmentDTO.class
 com\example\model\PrescriptionEntity.class
 com\example\dao\TeacherDAO.class
 com\example\model\Module.class
 com\example\model\DoctorEntity.class
 com\example\model\BillingInvoiceEntity.class
+com\example\resource\AppoinmentResource.class
 com\example\resource\ModuleResource.class
 com\example\resource\PatientResource.class
 com\example\dao\DoctorDAO.class
