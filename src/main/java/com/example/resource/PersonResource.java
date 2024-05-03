@@ -44,7 +44,7 @@ public class PersonResource {
     }
     @DELETE
     @Path("/{id}")
-    public Response updatePerson(@PathParam("id") int id){
+    public Response deletePerson(@PathParam("id") int id){
         Boolean result = personDAO.deletePerson(id);
         if (result) {
             return Response.ok("Person deleted successfully.").build();
