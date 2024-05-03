@@ -7,6 +7,8 @@ import com.example.dao.MedicalRecordDAO;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Map;
 
 @Path("/medicalrecord")
 @Produces(MediaType.APPLICATION_JSON)
@@ -19,7 +21,6 @@ public class MedicalRecordResource {
     @POST
     public Response createMedicalRecord(MedicalRecordDTO request) {
         Boolean result = medicalRecordDAO.createMedicalRecord(request);
-        System.out.println(result);
         if (result) {
             return Response.ok("Medical Record created successfully.").build();
         } else {
@@ -51,6 +52,32 @@ public class MedicalRecordResource {
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Failed to delete Medical Record.")
+                    .build();
+        }
+    }
+
+    @GET
+    public Response getAllMedicalRedords(){
+        List<Map<String, Object>> result = medicalRecordDAO.getAllMedicalRecordsWithPatients();
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error Occurred while fetching the data.")
+                    .build();
+        }
+    }
+    @GET
+    @Path("/{id}")
+    public Response getMedicalRecordById(@PathParam("id") int id){
+        Map<String, Object> result = medicalRecordDAO.getMedicalRecordByIdWithPatient(id);
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to delete person.")
                     .build();
         }
     }

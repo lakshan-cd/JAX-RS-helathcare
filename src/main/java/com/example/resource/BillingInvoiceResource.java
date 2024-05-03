@@ -8,6 +8,8 @@ import com.example.dao.MedicalRecordDAO;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Map;
 
 @Path("/invoice")
 @Produces(MediaType.APPLICATION_JSON)
@@ -29,6 +31,31 @@ public class BillingInvoiceResource {
         }
     }
 
+    @GET
+    public Response getAllBillingInvoice(){
+        List<Map<String, Object>> result = billingInvoiceDAO.getAllBillingInvoicesWithPatientsAndDoctors();
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error Occurred while fetching the data.")
+                    .build();
+        }
+    }
+    @GET
+    @Path("/{id}")
+    public Response getInvoiceById(@PathParam("id") int id){
+        Map<String, Object> result = billingInvoiceDAO.getBillingInvoiceByIdWithPatientAndDoctor(id);
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to delete person.")
+                    .build();
+        }
+    }
     @PUT
     @Path("/{id}")
     public Response updateBillingInvoice(@PathParam("id") int id , BillingInvoiceDTO request){

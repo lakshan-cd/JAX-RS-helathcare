@@ -1,5 +1,4 @@
 com\example\DTO\MedicalRecordDTO.class
-com\example\DTO\PrescriptionDTO.class
 com\example\resource\PrescriptionResource.class
 com\example\resource\BillingInvoiceResource.class
 com\example\resource\PersonResource.class
@@ -19,6 +18,7 @@ com\example\resource\MedicalRecordResource.class
 com\example\dao\DoctorDAO.class
 com\example\application\DatabaseConnection.class
 com\example\dao\PrescriptionDAO.class
+com\example\DTO\AppoinemntResponseDTO.class
 com\example\DTO\DoctorDTO.class
 com\example\dao\BillingInvoiceDAO.class
 com\example\exception\GlobalExceptionHandler.class
@@ -34,7 +34,6 @@ com\example\exception\ResourceNotFoundException.class
 com\example\exception\DAOException.class
 com\example\resource\TeacherResource.class
 com\example\dao\MedicalRecordDAO.class
-com\example\model\AppointmentEntity.class
 com\example\model\PatientEntity.class
 com\example\model\Student.class
 com\example\resource\DoctorResource.class

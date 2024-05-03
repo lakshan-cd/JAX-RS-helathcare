@@ -7,6 +7,8 @@ import com.example.dao.PrescriptionDAO;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.Map;
 
 @Path("/prescription")
 @Produces(MediaType.APPLICATION_JSON)
@@ -50,6 +52,32 @@ public class PrescriptionResource {
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Failed to delete Prescription.")
+                    .build();
+        }
+    }
+
+    @GET
+    public Response getAllPrescriptionData(){
+        List<Map<String, Object>> result = prescriptionDAO.getAllPrescriptionsWithPatientsAndDoctors();
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error Occurred while fetching the data.")
+                    .build();
+        }
+    }
+    @GET
+    @Path("/{id}")
+    public Response getDoctorDataById(@PathParam("id") int id){
+        Map<String, Object> result = prescriptionDAO.getPrescriptionByIdWithPatientAndDoctor(id);
+        if (result != null) {
+            return Response.ok(result)
+                    .build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to delete person.")
                     .build();
         }
     }
