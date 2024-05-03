@@ -56,5 +56,29 @@ public class BillingInvoiceResource {
                     .build();
         }
     }
+    @PUT
+    @Path("/{id}")
+    public Response updateBillingInvoice(@PathParam("id") int id , BillingInvoiceDTO request){
+        Boolean result = billingInvoiceDAO.updateInvoice(id,request);
+        if (result) {
+            return Response.ok("Invoice updated successfully.").build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to update Invoice.")
+                    .build();
+        }
+    }
 
+    @DELETE
+    @Path("/{id}")
+    public Response deleteInvoice(@PathParam("id") int id){
+        Boolean result = billingInvoiceDAO.deleteInvoice(id);
+        if (result) {
+            return Response.ok("Invoice deleted successfully.").build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to delete Invoice.")
+                    .build();
+        }
+    }
 }
